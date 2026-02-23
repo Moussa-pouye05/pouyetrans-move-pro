@@ -2,14 +2,14 @@ import { Phone, MessageCircle, FileText } from "lucide-react";
 import heroBg from "@/assets/hero-bg.jpg";
 
 const HeroSection = () => {
-  const phoneNumber = "+221XXXXXXXXX";
-  const whatsappLink = `https://wa.me/${phoneNumber.replace(/[^0-9]/g, "")}?text=${encodeURIComponent("Bonjour, je souhaite demander un devis pour un transport.")}`;
+  const phoneNumber = "+221771110168";
+  const whatsappLink = `https://wa.me/221771110168?text=${encodeURIComponent("Bonjour, je souhaite demander un devis pour un transport.")}`;
 
   return (
     <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
       <img
         src={heroBg}
-        alt="Véhicule Renault Master PouyeTrans chargé en route au Sénégal"
+        alt="Véhicule Renault Master PouyeTransportExpress chargé en route au Sénégal"
         className="absolute inset-0 w-full h-full object-cover"
         loading="eager"
       />
@@ -60,7 +60,6 @@ const HeroSection = () => {
         </div>
       </div>
 
-      {/* Scroll indicator */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-pulse-soft">
         <div className="w-6 h-10 rounded-full border-2 border-primary-foreground/40 flex justify-center pt-2">
           <div className="w-1.5 h-3 rounded-full bg-primary-foreground/60 animate-bounce" />

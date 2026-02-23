@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Send } from "lucide-react";
+import { Send, MapPin, Loader2 } from "lucide-react";
 
 const QuoteForm = () => {
   const [formData, setFormData] = useState({
@@ -11,18 +11,40 @@ const QuoteForm = () => {
     volume: "",
     date: "",
     message: "",
+    localisation: "",
   });
   const [submitted, setSubmitted] = useState(false);
+  const [geoLoading, setGeoLoading] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  const handleGeolocation = () => {
+    if (!navigator.geolocation) {
+      alert("La géolocalisation n'est pas supportée par votre navigateur.");
+      return;
+    }
+    setGeoLoading(true);
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        const { latitude, longitude } = position.coords;
+        const locationUrl = `https://www.google.com/maps?q=${latitude},${longitude}`;
+        setFormData((prev) => ({ ...prev, localisation: locationUrl }));
+        setGeoLoading(false);
+      },
+      () => {
+        alert("Impossible d'obtenir votre position. Vérifiez vos paramètres de localisation.");
+        setGeoLoading(false);
+      },
+      { enableHighAccuracy: true, timeout: 10000 }
+    );
+  };
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Build WhatsApp message
-    const msg = `Bonjour PouyeTrans,\n\nDemande de devis :\n- Nom : ${formData.nom}\n- Téléphone : ${formData.telephone}\n- Départ : ${formData.villeDepart}\n- Destination : ${formData.villeDestination}\n- Type : ${formData.typeChargement}\n- Volume : ${formData.volume}\n- Date : ${formData.date}\n- Message : ${formData.message}`;
-    const whatsappUrl = `https://wa.me/221XXXXXXXXX?text=${encodeURIComponent(msg)}`;
+    const msg = `Bonjour PouyeTransportExpress,\n\nDemande de devis :\n- Nom : ${formData.nom}\n- Téléphone : ${formData.telephone}\n- Départ : ${formData.villeDepart}\n- Destination : ${formData.villeDestination}\n- Type : ${formData.typeChargement}\n- Volume : ${formData.volume}\n- Date : ${formData.date}\n- Message : ${formData.message}${formData.localisation ? `\n- 📍 Position du client : ${formData.localisation}` : ""}`;
+    const whatsappUrl = `https://wa.me/221771110168?text=${encodeURIComponent(msg)}`;
     window.open(whatsappUrl, "_blank");
     setSubmitted(true);
   };
@@ -128,6 +150,30 @@ const QuoteForm = () => {
                 onChange={handleChange}
                 className={inputClass}
               />
+
+              {/* Geolocation */}
+              <div className="space-y-2">
+                <button
+                  type="button"
+                  onClick={handleGeolocation}
+                  disabled={geoLoading}
+                  className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-primary-foreground/10 border border-primary-foreground/20 text-primary-foreground font-medium text-sm hover:bg-primary-foreground/20 transition-all disabled:opacity-50"
+                >
+                  {geoLoading ? (
+                    <Loader2 className="w-4 h-4 animate-spin" />
+                  ) : (
+                    <MapPin className="w-4 h-4 text-secondary" />
+                  )}
+                  📍 Partager ma position (pour que le chauffeur vous rejoigne)
+                </button>
+                {formData.localisation && (
+                  <p className="text-sm text-primary-foreground/60 flex items-center gap-1">
+                    <MapPin className="w-3 h-3 text-secondary" />
+                    Position enregistrée — <a href={formData.localisation} target="_blank" rel="noopener noreferrer" className="underline text-secondary hover:text-orange-light">voir sur la carte</a>
+                  </p>
+                )}
+              </div>
+
               <textarea
                 name="message"
                 placeholder="Message ou détails supplémentaires..."
