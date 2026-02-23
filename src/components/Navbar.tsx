@@ -1,15 +1,17 @@
-import { Phone, Truck } from "lucide-react";
+import { Phone } from "lucide-react";
+import logo from "@/assets/logo.png";
 
 const Navbar = () => {
-  const phoneNumber = "+221XXXXXXXXX";
+  const phoneNumber = "+221771110168";
 
   return (
     <header className="fixed top-0 left-0 right-0 z-40 bg-navy-dark/95 backdrop-blur-md border-b border-primary-foreground/5">
       <div className="container flex items-center justify-between h-16">
         <a href="#" className="flex items-center gap-2">
-          <Truck className="w-6 h-6 text-secondary" />
+          <img src={logo} alt="PouyeTransportExpress logo" className="w-8 h-8 object-contain" />
           <span className="text-lg font-extrabold text-primary-foreground tracking-tight">
-            POUYE<span className="text-gradient">TRANS</span>
+            POUYE<span className="text-gradient">TRANSPORT</span>
+            <span className="text-primary-foreground text-xs ml-0.5 font-bold">EXPRESS</span>
           </span>
         </a>
 

@@ -4,7 +4,7 @@ import loadingProcess from "@/assets/loading-process.jpg";
 import transportRoute from "@/assets/transport-route.jpg";
 
 const images = [
-  { src: masterExterior, alt: "Renault Master PouyeTrans - vue extérieure" },
+  { src: masterExterior, alt: "Renault Master PouyeTransportExpress - vue extérieure" },
   { src: masterLoaded, alt: "Véhicule chargé - organisation du chargement" },
   { src: loadingProcess, alt: "Processus de chargement des meubles" },
   { src: transportRoute, alt: "Transport en cours au Sénégal" },
