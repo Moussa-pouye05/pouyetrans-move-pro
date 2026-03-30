@@ -9,7 +9,7 @@ const HeroSection = () => {
     <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
       <img
         src={heroBg}
-        alt="Véhicule Renault Master PouyeTransportExpress chargé en route au Sénégal"
+        alt="Véhicule Renault Master PouyeTrans chargé en route au Sénégal"
         className="absolute inset-0 w-full h-full object-cover"
         loading="eager"
       />
