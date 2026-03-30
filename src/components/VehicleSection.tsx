@@ -18,7 +18,7 @@ const VehicleSection = () => {
             <div className="absolute -inset-4 bg-gradient-to-r from-secondary/20 to-primary/10 rounded-2xl blur-xl opacity-60 group-hover:opacity-80 transition-opacity" />
             <img
               src={masterExterior}
-              alt="Renault Master PouyeTransportExpress - véhicule de transport"
+              alt="Renault Master PouyeTrans - véhicule de transport"
               className="relative rounded-xl shadow-card w-full object-cover aspect-[4/3]"
               loading="lazy"
             />
