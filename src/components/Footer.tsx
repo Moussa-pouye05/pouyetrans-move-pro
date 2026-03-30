@@ -11,10 +11,9 @@ const Footer = () => {
           {/* Brand */}
           <div className="space-y-4">
             <div className="flex items-center gap-2">
-              <img src={logo} alt="PouyeTransportExpress logo" className="w-8 h-8 object-contain" />
+              <img src={logo} alt="PouyeTrans logo" className="w-7 h-7 object-contain" />
               <span className="text-xl font-extrabold tracking-tight">
-                POUYE<span className="text-gradient">TRANSPORT</span>
-                <span className="text-primary-foreground text-xs ml-0.5 font-bold">EXPRESS</span>
+                POUYE<span className="text-gradient">TRANS</span>
               </span>
             </div>
             <p className="text-primary-foreground/60 leading-relaxed">
