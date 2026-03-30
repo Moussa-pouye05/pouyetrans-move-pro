@@ -75,7 +75,7 @@ const Footer = () => {
         </div>
 
         <div className="mt-10 pt-6 border-t border-primary-foreground/10 text-center text-sm text-primary-foreground/40">
-          © {new Date().getFullYear()} PouyeTransportExpress — Transport & Déménagement. Tous droits réservés.
+          © {new Date().getFullYear()} PouyeTrans — Transport & Déménagement. Tous droits réservés.
         </div>
       </div>
     </footer>
